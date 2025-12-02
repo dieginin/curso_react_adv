@@ -6,10 +6,6 @@ export const CounterEffect = () => {
   const [counter, setCounter] = useState(4)
 
   const handleAdd = () => setCounter(Math.min(counter + 1, MAXIMUM_COUNT))
-  // const handleAdd = () => {
-  //   if (counter >= MAXIMUM_COUNT) return
-  //   setCounter(counter + 1)
-  // }
 
   useEffect(() => {
     if (counter < MAXIMUM_COUNT) return
