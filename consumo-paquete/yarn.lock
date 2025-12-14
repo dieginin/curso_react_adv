@@ -6587,6 +6587,11 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
+nb-product-card@1.0.0-rc:
+  version "1.0.0-rc"
+  resolved "https://registry.yarnpkg.com/nb-product-card/-/nb-product-card-1.0.0-rc.tgz#8736d480620e3e18c6bd37c34b6bd4369c983bca"
+  integrity sha512-V6JemnmbhBtEFvnu7gHx7QoC96r4nEJ25rbLbf+zeAhmbC82jndOMOPDP7WW3OUrDb9QW5UON5YTRWmcIY8j4w==
+
 negotiator@0.6.3:
   version "0.6.3"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.3.tgz#58e323a72fedc0d6f9cd4d31fe49f51479590ccd"
