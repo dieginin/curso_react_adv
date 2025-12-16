@@ -1,7 +1,9 @@
 import "./MyLabel.css"
 
 interface Props {
+  /** Text to display */
   label: string
+  /** Label size */
   size?: "normal" | "h1" | "h2" | "h3"
 }
 
