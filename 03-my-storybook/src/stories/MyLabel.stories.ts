@@ -19,6 +19,7 @@ export const Basic: Story = {
   args: {
     label: "Basic label",
     allCaps: false,
+    backgroundColor: "transparent",
     color: undefined,
     fontColor: undefined,
     size: "normal",
@@ -28,7 +29,7 @@ export const Basic: Story = {
 export const AllCaps: Story = {
   args: {
     allCaps: true,
-    label: "All Caps labelpkl,",
+    label: "All Caps label",
     size: "normal",
   },
 }
@@ -46,5 +47,14 @@ export const CustomColor: Story = {
     fontColor: "red",
     label: "Custom Color label",
     size: "normal",
+  },
+}
+
+export const CustomBackgroundColor: Story = {
+  args: {
+    backgroundColor: "red",
+    fontColor: "yellow",
+    label: "Custom Background Color label",
+    size: "h1",
   },
 }
