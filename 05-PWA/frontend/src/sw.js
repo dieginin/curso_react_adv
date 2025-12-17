@@ -1,0 +1,30 @@
+import { NavigationRoute, registerRoute } from "workbox-routing"
+import {
+  cleanupOutdatedCaches,
+  createHandlerBoundToURL,
+  precacheAndRoute,
+} from "workbox-precaching"
+
+import { clientsClaim } from "workbox-core"
+
+cleanupOutdatedCaches()
+
+// self.__WB_MANIFEST is default injection point
+precacheAndRoute(self.__WB_MANIFEST)
+
+// to allow work offline
+registerRoute(
+  new NavigationRoute(createHandlerBoundToURL("index.html"), {
+    denylist: [/^\/backoffice/],
+  })
+)
+
+self.skipWaiting()
+
+clientsClaim()
+self.addEventListener("install", async (event) => {
+  const cache = await caches.open("cache-1")
+  await cache.addAll([
+    //aca lo que se quiere llevar al cache
+  ])
+})
