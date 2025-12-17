@@ -9,7 +9,6 @@ import { clientsClaim } from "workbox-core"
 
 cleanupOutdatedCaches()
 
-// self.__WB_MANIFEST is default injection point
 precacheAndRoute(self.__WB_MANIFEST)
 
 // to allow work offline
@@ -25,6 +24,8 @@ clientsClaim()
 self.addEventListener("install", async (event) => {
   const cache = await caches.open("cache-1")
   await cache.addAll([
-    //aca lo que se quiere llevar al cache
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css",
+    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css",
+    "/vite.svg",
   ])
 })
