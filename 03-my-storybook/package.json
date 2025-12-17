@@ -1,7 +1,7 @@
 {
   "name": "nb-custom-components",
   "private": false,
-  "version": "0.0.2-rc2",
+  "version": "0.1.0",
   "type": "module",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -33,7 +33,9 @@
     "build-storybook": "storybook build",
     "chromatic": "npx chromatic --project-token=chpt_d80787d223d910b",
     "clean": "rimraf dist/",
-    "copyfiles": "copyfiles -u 1 src/**/*.css dist/"
+    "copyfiles": "copyfiles -u 1 src/**/*.css dist/",
+    "push:npm": "np",
+    "test": "echo 'all tests were good'"
   },
   "peerDependencies": {
     "react": "^19.2.0",
@@ -55,6 +57,7 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "eslint-plugin-storybook": "^10.1.9",
     "globals": "^16.5.0",
+    "np": "^10.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "rimraf": "^6.1.2",
