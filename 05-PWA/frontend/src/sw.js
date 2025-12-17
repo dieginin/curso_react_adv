@@ -29,3 +29,7 @@ self.addEventListener("install", async (event) => {
     "/vite.svg",
   ])
 })
+
+self.addEventListener("fetch", (event) => {
+  console.log(event.request.url)
+})
