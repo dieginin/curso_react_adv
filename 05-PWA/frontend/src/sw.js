@@ -21,7 +21,7 @@ registerRoute(
 self.skipWaiting()
 
 clientsClaim()
-self.addEventListener("install", async (event) => {
+self.addEventListener("install", async () => {
   const cache = await caches.open("cache-1")
   await cache.addAll([
     "https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css",
@@ -35,12 +35,17 @@ self.addEventListener("fetch", (event) => {
 
   const resp = fetch(event.request)
     .then((response) => {
+      // Guardar en cache
+      caches
+        .open("cache-dynamic")
+        .then((cache) => cache.put(event.request, response))
+
       return response.clone()
     })
-    .catch((err) => {
+    .catch(() => {
       console.log("offline response")
-      // return caches.match()
+      return caches.match(event.request)
     })
 
-  event.responseWith(resp)
+  event.respondWith(resp)
 })
