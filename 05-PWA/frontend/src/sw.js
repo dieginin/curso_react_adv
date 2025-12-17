@@ -42,10 +42,7 @@ self.addEventListener("fetch", (event) => {
 
       return response.clone()
     })
-    .catch(() => {
-      console.log("offline response")
-      return caches.match(event.request)
-    })
+    .catch(() => caches.match(event.request))
 
   event.respondWith(resp)
 })
