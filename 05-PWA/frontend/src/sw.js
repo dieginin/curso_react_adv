@@ -12,11 +12,7 @@ cleanupOutdatedCaches()
 precacheAndRoute(self.__WB_MANIFEST)
 
 // to allow work offline
-registerRoute(
-  new NavigationRoute(createHandlerBoundToURL("index.html"), {
-    denylist: [/^\/backoffice/],
-  })
-)
+registerRoute(new NavigationRoute(createHandlerBoundToURL("index.html")))
 
 self.skipWaiting()
 
@@ -30,11 +26,17 @@ self.addEventListener("install", async () => {
   ])
 })
 
+const apiOfflineFallbacks = [
+  "http://localhost:4000/api/auth/renew",
+  "http://localhost:4000/api/events",
+]
 self.addEventListener("fetch", (event) => {
-  if (event.request.url !== "http://localhost:4000/api/auth/renew") return
+  if (!apiOfflineFallbacks.includes(event.request.url)) return
 
   const resp = fetch(event.request)
     .then((response) => {
+      if (!response) return caches.match(event.request)
+
       // Guardar en cache
       caches
         .open("cache-dynamic")
