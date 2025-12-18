@@ -1,3 +1,5 @@
+import { Offline, Online } from "react-detect-offline"
+
 import { useAuthStore } from "../../hooks"
 
 export const Navbar = () => {
@@ -10,6 +12,13 @@ export const Navbar = () => {
         &nbsp;
         {user.name}
       </span>
+
+      <Online>
+        <span className='text-success'>Online</span>
+      </Online>
+      <Offline>
+        <span className='text-danger'>Offline</span>
+      </Offline>
 
       <button className='btn btn-outline-danger' onClick={startLogout}>
         <i className='fas fa-sign-out-alt'></i>
