@@ -1,9 +1,11 @@
 import { CacheFirst, NetworkFirst } from "workbox-strategies"
 
+import { BackgroundSyncPlugin } from "workbox-background-sync"
+import { NetworkOnly } from "workbox-strategies"
 import { precacheAndRoute } from "workbox-precaching"
 import { registerRoute } from "workbox-routing"
 
-precacheAndRoute([...self.__WB_MANIFEST, { url: "/vite.svg" }])
+precacheAndRoute([...self.__WB_MANIFEST, { url: "/vite.svg", revision: null }])
 
 registerRoute(
   new RegExp(
@@ -27,4 +29,17 @@ registerRoute(
 registerRoute(
   new RegExp("http://localhost:4000/api/events"),
   new NetworkFirst()
+)
+
+// Post offline
+const bgSyncPlugin = new BackgroundSyncPlugin("posts-offline", {
+  maxRetentionTime: 24 * 60, // Retry for max of 24 Hours (specified in minutes)
+})
+
+registerRoute(
+  new RegExp("http://localhost:4000/api/events"),
+  new NetworkOnly({
+    plugins: [bgSyncPlugin],
+  }),
+  "POST"
 )
