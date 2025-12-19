@@ -8,6 +8,7 @@ export const mapReducer = (state: MapState, action: MapAction): MapState => {
     case "setMap":
       return {
         ...state,
+        isMapReady: true,
         map: action.payload,
       }
 

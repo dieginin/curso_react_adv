@@ -15,5 +15,7 @@ const INITIAL_STATE: MapState = {
 export const MapProvider = ({ children }: PropsWithChildren) => {
   const [state, dispatch] = useReducer(mapReducer, INITIAL_STATE)
 
-  return <MapContext value={state}>{children}</MapContext>
+  const setMap = (map: Map) => dispatch({ type: "setMap", payload: map })
+
+  return <MapContext value={{ ...state, setMap }}>{children}</MapContext>
 }
