@@ -1,3 +1,6 @@
+export { MapContext } from "./map/MapContext"
+export { mapReducer } from "./map/map.reducer"
 export { PlacesContext } from "./places/PlacesContext"
 export { placesReducer } from "./places/places.reducer"
+export { type MapState, MapProvider } from "./map/MapProvider"
 export { type PlacesState, PlacesProvider } from "./places/PlacesProvider"
