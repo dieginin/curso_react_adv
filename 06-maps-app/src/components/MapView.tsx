@@ -1,7 +1,7 @@
+import { BtnMyLocation, Loading } from "./"
 import { MapContext, PlacesContext } from "../contexts"
 import { useContext, useLayoutEffect, useRef } from "react"
 
-import { Loading } from "./"
 import { Map } from "mapbox-gl"
 
 export const MapView = () => {
@@ -13,7 +13,7 @@ export const MapView = () => {
     if (!isLoading) {
       const map = new Map({
         container: mapDiv.current!,
-        style: "mapbox://styles/mapbox/streets-v12",
+        style: "mapbox://styles/mapbox/light-v10",
         center: userLocation,
         zoom: 14,
       })
@@ -33,6 +33,8 @@ export const MapView = () => {
         top: 0,
         width: "100vw",
       }}
-    />
+    >
+      <BtnMyLocation />
+    </div>
   )
 }
