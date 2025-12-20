@@ -1,6 +1,8 @@
 import type { PlacesState } from ".."
 
-type PlacesAction = { type: "setUserLocation"; payload: [number, number] }
+type PlacesAction =
+  | { type: "setUserLocation"; payload: [number, number] }
+  | { type: "setSearch"; payload: string }
 
 export const placesReducer = (
   state: PlacesState,
