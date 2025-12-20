@@ -6,6 +6,8 @@ import {
   useReducer,
   type PropsWithChildren,
 } from "react"
+import { directionsApi } from "../../apis"
+import type { DirectionsResponse } from "../../interfaces/directions.response"
 
 export interface MapState {
   isMapReady: boolean
@@ -62,7 +64,19 @@ export const MapProvider = ({ children }: PropsWithChildren) => {
     start: [number, number],
     end: [number, number]
   ) => {
-    console.log(start, end)
+    const resp = await directionsApi.get<DirectionsResponse>(
+      `/${start.join(",")};${end.join(",")}`
+    )
+
+    const { distance, duration, geometry } = resp.data.routes[0]
+
+    let kms = distance / 1000
+    kms = Math.round(kms * 100)
+    kms /= 100
+
+    const mins = Math.floor(duration / 60)
+
+    console.log({ kms, mins })
   }
 
   return (
