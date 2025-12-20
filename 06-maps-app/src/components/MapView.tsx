@@ -6,7 +6,7 @@ import { Map } from "mapbox-gl"
 
 export const MapView = () => {
   const { isLoading, userLocation } = useContext(PlacesContext)
-  const { isMapReady, setMap } = useContext(MapContext)
+  const { setMap } = useContext(MapContext)
   const mapDiv = useRef<HTMLDivElement>(null)
 
   useLayoutEffect(() => {
