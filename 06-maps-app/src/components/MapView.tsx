@@ -1,9 +1,8 @@
-import { BtnMyLocation, Loading } from "."
 import { MapContext, PlacesContext } from "../contexts"
 import { useContext, useLayoutEffect, useRef } from "react"
 
+import { Loading } from "."
 import { Map } from "mapbox-gl"
-import { ReactLogo } from "./ReactLogo"
 
 export const MapView = () => {
   const { isLoading, userLocation } = useContext(PlacesContext)
@@ -34,9 +33,6 @@ export const MapView = () => {
         top: 0,
         width: "100vw",
       }}
-    >
-      <BtnMyLocation />
-      <ReactLogo />
-    </div>
+    ></div>
   )
 }
