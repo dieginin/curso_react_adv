@@ -3,6 +3,8 @@ import { createContext } from "react"
 
 interface PlacesContextProps {
   isLoading: boolean
+  isLoadingPlaces: boolean
+  places: Feature[]
   userLocation?: [number, number]
   searchPlacesByQuery: (query: string) => Promise<Feature[]>
 }
