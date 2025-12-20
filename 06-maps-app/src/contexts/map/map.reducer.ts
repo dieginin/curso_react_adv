@@ -1,7 +1,10 @@
-import type { Map } from "mapbox-gl"
+import type { Map, Marker } from "mapbox-gl"
+
 import type { MapState } from ".."
 
-type MapAction = { type: "setMap"; payload: Map }
+type MapAction =
+  | { type: "setMap"; payload: Map }
+  | { type: "setMarkers"; payload: Marker[] }
 
 export const mapReducer = (state: MapState, action: MapAction): MapState => {
   switch (action.type) {
@@ -10,6 +13,12 @@ export const mapReducer = (state: MapState, action: MapAction): MapState => {
         ...state,
         isMapReady: true,
         map: action.payload,
+      }
+
+    case "setMarkers":
+      return {
+        ...state,
+        markers: action.payload,
       }
 
     default:
